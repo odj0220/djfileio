@@ -8,6 +8,10 @@
     "email": "odj0220@nate.com",
     "url": "http://www.djcloud.co.kr/"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/odj0220/djfileio.git"
+  },
   "dependencies": {
     "fs": "0.0.2",
     "mongodb": "^2.2.5"
