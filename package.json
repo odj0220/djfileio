@@ -1,8 +1,13 @@
 {
-  "name": "djFileIO",
+  "name": "djfileio",
   "description": "node file IO controll module",
   "version": "0.1.0",
-  "private": true,
+  "license": "(Apache-2.0 OR MIT)",
+  "author": {
+    "name": "Dongjin Oh",
+    "email": "odj0220@nate.com",
+    "url": "http://www.djcloud.co.kr/"
+  },
   "dependencies": {
     "fs": "0.0.2",
     "mongodb": "^2.2.5"
