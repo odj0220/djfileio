@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+    <script src="http://code.jquery.com/jquery-1.7.1.js"></script>
+</head>
+<body>
+    <form action="/upload", method="post", enctype="multipart/form-data">
+        <input type="file" name="uploadfile"/>
+        <input type="submit" name="upload"/>
+    </form>
+    <input type="hidden" id="path"/>
+    <input type="text" id="folder"/> <button id="createFolder">폴더생성</button>
+    <div id="controllBox">
+        <button onclick="getList('/')">Home</button><button onclick="getList('recycle')">Recycle</button><button>Paste</button>
+    </div>
+    <div id="up"></div>
+    <table id="list">
+        <thead>
+        <tr>
+            <th>종류</th>
+            <th>이름</th>
+            <th>사이즈</th>
+            <th>올린날자</th>
+            <th>컨트롤</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+
+<script>
+    var root;
+    $( document ).ready(function() {
+        getList();
+        $("#createFolder").bind('click', function(){
+            createFolder();
+        });
+    });
+
+    function getList(code){
+        code = code || root || '/';
+        $("#list > tbody").empty();
+        $("#up").empty();
+        $.ajax({
+            type: "GET",
+            url: "/list",
+            dataType: "json",
+            data: {
+                code: code
+            },
+            error: function(err){
+                console.log("에러");
+                console.log(err);
+            },
+            success: function(data){
+                var str = "";
+                data.list.forEach(function(v, i){
+                    str += "<tr>";
+                    str += "<td>"+v.type+"</td>";
+                    if(v.type === '2'){
+                        str += "<td><a href='#' onclick='getList(\""+v._id+"\")'>"+v.fileName+"</a></td>";
+                    }else{
+                        str += "<td>"+v.fileName+"</td>";
+                    }
+                    str += "<td>"+v.fileSize+"</td>";
+                    str += "<td>"+v.created+"</td>";
+                    str += "<td><button>cut</button><button>copy</button><button onclick='fileDelete(\""+v._id+"\")'>delete</button></td>";
+                    str += "</tr>";
+                });
+                $("#list > tbody").append(str);
+
+                if(data.prop){
+                    $("#up").append("<button onclick='getList(\""+data.prop.parent+"\")'>상위로</button>");
+                    root = data.prop.parent;
+                }
+            }
+        });
+    };
+
+    function createFolder(){
+        if($("#folder").val()){
+            $.ajax({
+                type: "GET",
+                url: "/addFolder",
+                dataType: "json",
+                data: {
+                    parent: $("#path").val(),
+                    name: $("#folder").val()
+                },
+                error: function(err){
+                    console.log("에러");
+                    console.log(err);
+
+                },
+                success: function(data){
+                    alert('폴더생성 완료');
+                    getList();
+                }
+            });
+        }else{
+            alert("생성할 폴더명을 입력하세요");
+        }
+    };
+
+    function fileDelete(code){
+        $.ajax({
+            type: "GET",
+            url: "/delete",
+            dataType: "json",
+            data: {
+                code: code
+            },
+            error: function(err){
+                console.log("에러");
+                console.log(err);
+
+            },
+            success: function(data){
+                getList(root);
+            }
+        });
+    }
+
+
+</script>
+</body>
+</html>

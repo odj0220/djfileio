@@ -1,0 +1,10 @@
+{
+  "name": "djFileIO",
+  "description": "node file IO controll module",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "fs": "0.0.2",
+    "mongodb": "^2.2.5"
+  }
+}
