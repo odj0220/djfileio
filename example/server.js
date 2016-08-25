@@ -74,9 +74,4 @@ app.get('/delete', function(req, res){
     });
 });
 
-
-djFileIO.copyFile('7Te7j5wEVVp1EsgZseDl', null, function(err, success){
-    console.log(success);
-});
-
-app.listen(3000);
+app.listen(3001);
