@@ -21,7 +21,14 @@ app.get('/', function(req, res){
 
 app.post('/upload', function(req, res){
     console.log('업로드 서버 호출');
-    var form = new formidable.IncomingForm();
+    djFileIO.fileUpload('admin','/',req, function(err, f){
+        if(err){
+            console.log(err);
+        }else{
+            res.redirect('/');
+        }
+    });
+    /*var form = new formidable.IncomingForm();
 
     form.parse(req);
     form.on('fileBegin', function (name, file){
@@ -29,14 +36,8 @@ app.post('/upload', function(req, res){
     });
 
     form.on('file', function (name, file){
-        djFileIO.fileUpload('admin','/',file, function(err, f){
-            if(err){
-                console.log(err);
-            }else{
-                res.redirect('/');
-            }
-        });
-    });
+
+    });*/
 });
 
 app.get('/list', function(req, res){

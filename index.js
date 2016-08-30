@@ -20,3 +20,4 @@ exports.properties = ctrl.properties;
 exports.fileDelete = ctrl.fileDelete;
 exports.moveFile = ctrl.moveFile;
 exports.copyFile = ctrl.copyFile;
+exports.rename = con.rename;

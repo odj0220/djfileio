@@ -57,6 +57,7 @@
             },
             success: function(data){
                 var str = "";
+                console.log(data.prop);
                 data.list.forEach(function(v, i){
                     str += "<tr>";
                     str += "<td>"+v.type+"</td>";
@@ -81,7 +82,7 @@
     };
 
     function createFolder(){
-        if($("#folder").val()){
+            if($("#folder").val()){
             $.ajax({
                 type: "GET",
                 url: "/addFolder",
