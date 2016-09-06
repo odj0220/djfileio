@@ -1,7 +1,7 @@
 {
   "name": "djfileio",
   "description": "node file IO controll module",
-  "version": "0.1.2",
+  "version": "0.1.6",
   "license": "(Apache-2.0 OR MIT)",
   "author": {
     "name": "Dongjin Oh",
@@ -13,6 +13,7 @@
     "url": "https://github.com/odj0220/djfileio.git"
   },
   "dependencies": {
+    "djms": "^0.1.0",
     "formidable": "^1.0.17",
     "fs": "0.0.2",
     "mongodb": "^2.2.5"

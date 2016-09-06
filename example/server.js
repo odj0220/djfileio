@@ -21,7 +21,7 @@ app.get('/', function(req, res){
 
 app.post('/upload', function(req, res){
     console.log('업로드 서버 호출');
-    djFileIO.fileUpload('admin','/',req, function(err, f){
+    djFileIO.fileUpload(req, 'admin', '/', '', function(err, f){
         if(err){
             console.log(err);
         }else{

@@ -21,3 +21,5 @@ exports.fileDelete = ctrl.fileDelete;
 exports.moveFile = ctrl.moveFile;
 exports.copyFile = ctrl.copyFile;
 exports.rename = con.rename;
+exports.mediaStreaming = ctrl.mediaStreaming;
+exports.mediaTag = ctrl.mediaTag;
