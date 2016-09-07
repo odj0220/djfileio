@@ -44,7 +44,7 @@ app.get('/list', function(req, res){
     djFileIO.fileList(req.query.code, function(err, list){
         djFileIO.properties(req.query.code, function(result){
             res.jsonp({
-                list: list,
+                list: list.data,
                 prop: result
             });
         });
