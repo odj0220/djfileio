@@ -75,4 +75,10 @@ app.get('/delete', function(req, res){
     });
 });
 
+app.get('/image', function(req, res){
+    var code = req.query.code;
+    djFileIO.imageLoad(code, res);
+});
+
+
 app.listen(3001);

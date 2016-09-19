@@ -23,3 +23,4 @@ exports.copyFile = ctrl.copyFile;
 exports.rename = con.rename;
 exports.mediaStreaming = ctrl.mediaStreaming;
 exports.mediaTag = ctrl.mediaTag;
+exports.imageLoad = ctrl.imageLoad;
